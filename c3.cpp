@@ -8,20 +8,21 @@ C3::C3(std::vector<function> fs, std::vector<std::vector<edge>> es):
         edges_(es),
         max_heap_(es),
         disjoint_set_(functions_.size()),
-        clusters_(functions_.size()) {
-            memset(clusetr_call_count_, 0, sizeof(clusetr_call_count_));
-            for(int i = 0; i < functions_.size(); i ++){
-                cluster_size_[i] = functions_[i].second;
-            }
-            for(auto edges: es){
-                for(auto e: edges){
-                    int count = e.first;
-                    int start = e.second.first;
-                    int end = e.second.second;
-                    if(start != end) clusetr_call_count_[start][end] = count;
-                }
-            }
+        clusters_(functions_.size()),
+        cluster_size_(functions_.size()) {
+    memset(clusetr_call_count_, 0, sizeof(clusetr_call_count_));
+    for(int i = 0; i < functions_.size(); i ++){
+        cluster_size_[i] = functions_[i].second;
+    }
+    for(auto edges: es){
+        for(auto e: edges){
+            int count = e.first;
+            int start = e.second.first;
+            int end = e.second.second;
+            if(start != end) clusetr_call_count_[start][end] = count;
         }
+    }
+}
 
 void C3::clustering(){
     while(!max_heap_.empty()){

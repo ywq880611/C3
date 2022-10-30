@@ -3,7 +3,6 @@
 
 #include "disjointSet.h"
 #include "maxHeap.h"
-#include "global.h"
 
 class C3{
 public:
