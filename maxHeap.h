@@ -1,12 +1,14 @@
-#include "global.h"
+#ifndef MAX_HEAP_H_
+#define MAX_HEAP_H_
 
-// instance format: edge length, (start node, end node)
-using edge = std::pair<int, std::pair<int, int>>;
+#include "global.h"
 
 class MaxHeap
 {    
 public:
     MaxHeap(std::vector<edge> edges);
+
+    MaxHeap(std::vector<std::vector<edge>> func_edges);
 
     void insert(edge e);
 
@@ -23,8 +25,10 @@ private:
 
     void down(int idx);
 
-    int edge_len(int idx);
+    int edge_count(int idx);
 
     edge heap_[max_nodes * max_nodes * 2];
     int size_;
 };
+
+#endif

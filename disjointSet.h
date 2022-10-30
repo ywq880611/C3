@@ -1,3 +1,6 @@
+#ifndef DISJOINT_SET_
+#define DISJOINT_SET_
+
 #include "global.h"
 
 class DisjointSet
@@ -13,3 +16,5 @@ private:
     int fa_[max_nodes];
     int size_;
 };
+
+#endif
